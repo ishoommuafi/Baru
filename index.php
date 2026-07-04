@@ -110,7 +110,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <a href="index.php" class="mobile-nav-item active">Beranda</a>
             <a href="status.php" class="mobile-nav-item">Jadwal</a>
             <?php if ($isLoggedIn): ?>
-                <a href="history.php" class="mobile-nav-item">Riwayat</a>
+            <a href="history.php" class="mobile-nav-item">Riwayat</a>
             <?php endif; ?>
             <a href="<?= $isLoggedIn ? 'auth/logout.php' : 'login.php' ?>" class="mobile-nav-item">Akun</a>
         </div>
