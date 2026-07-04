@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$username]);
     $user = $stmt->fetch();
 
-    if ($user && (password_verify($password, $user['password']) || $password === $user['password'])) {
+    if ($user && password_verify($password, $user['password'])) {
         // Password correct
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $user['role'];

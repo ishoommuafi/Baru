@@ -14,7 +14,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIPERKA - Login</title>
+    <title>SIPERKA - Registrasi Akun</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,47 +27,49 @@ if (isset($_SESSION['user_id'])) {
     <main>
         <div class="auth-wrapper">
             <div class="auth-card">
-                <div class="auth-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <div class="auth-icon" style="background: var(--primary); color: #fff;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
                 </div>
-                <h2>Selamat Datang</h2>
-                <p>Silakan masuk ke akun SIPERKA Anda.</p>
+                <h2>Daftar Akun Baru</h2>
+                <p>Silakan isi data untuk mendaftar akun SIPERKA.</p>
                 
                 <?php if (isset($_GET['error'])): ?>
                 <div style="background: var(--danger-bg); color: var(--danger); padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600;">
                     <?php 
-                    if ($_GET['error'] === 'invalid') echo "Username atau password salah.";
-                    elseif ($_GET['error'] === 'empty') echo "Silakan isi username dan password.";
-                    else echo "Terjadi kesalahan.";
+                    if ($_GET['error'] === 'empty') echo "Semua kolom harus diisi.";
+                    elseif ($_GET['error'] === 'mismatch') echo "Password dan konfirmasi password tidak cocok.";
+                    elseif ($_GET['error'] === 'exists') echo "NIM/Username sudah terdaftar.";
+                    else echo "Terjadi kesalahan sistem.";
                     ?>
                 </div>
                 <?php endif; ?>
 
-                <?php if (isset($_GET['sukses']) && $_GET['sukses'] === 'register'): ?>
-                <div style="background: #E6F6ED; color: var(--success); padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600;">
-                    Registrasi berhasil! Silakan masuk dengan akun baru Anda.
-                </div>
-                <?php endif; ?>
-
-                <form action="auth/login.php" method="POST">
+                <form action="auth/register.php" method="POST">
+                    <div class="form-group">
+                        <label for="nama" style="text-align: left;">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
                     <div class="form-group">
                         <label for="username" style="text-align: left;">NIM / NIDN / Username</label>
-                        <input type="text" id="username" name="username" placeholder="Masukkan ID Anda" required>
+                        <input type="text" id="username" name="username" placeholder="Masukkan ID/NIM Anda" required>
                     </div>
                     <div class="form-group">
                         <label for="password" style="text-align: left;">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+                        <input type="password" id="password" name="password" placeholder="Buat password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_confirm" style="text-align: left;">Konfirmasi Password</label>
+                        <input type="password" id="password_confirm" name="password_confirm" placeholder="Ulangi password" required>
                     </div>
                     
-                    <div class="auth-actions">
-                        <button type="submit" class="btn btn-primary">Masuk</button>
+                    <div class="auth-actions" style="margin-top: 1.5rem;">
+                        <button type="submit" class="btn btn-primary">Daftar Akun</button>
                     </div>
                     
                     <div style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem;">
-                        <span style="color: var(--text-light);">Belum punya akun?</span> 
-                        <a href="register.php" style="color: var(--secondary); font-weight: 600; text-decoration: none;">Daftar di sini</a>
+                        <span style="color: var(--text-light);">Sudah punya akun?</span> 
+                        <a href="login.php" style="color: var(--secondary); font-weight: 600; text-decoration: none;">Masuk di sini</a>
                     </div>
-                    
                 </form>
             </div>
         </div>
