@@ -25,6 +25,10 @@ if (isset($_SESSION['user_id'])) {
     </header>
 
     <main>
+        <section class="card page-intro" style="max-width: 420px; margin: 1rem auto 0;">
+            <div class="page-intro-title">Buat akun SIPERKA</div>
+            <p>Daftar sekarang untuk mulai mengajukan peminjaman ruangan.</p>
+        </section>
         <div class="auth-wrapper">
             <div class="auth-card">
                 <div class="auth-icon" style="background: var(--primary); color: #fff;">

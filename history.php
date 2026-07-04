@@ -38,6 +38,11 @@ $riwayat = $stmt->fetchAll();
     </nav>
 
     <main>
+        <section class="card page-intro">
+            <div class="page-intro-title">Riwayat peminjaman Anda</div>
+            <p>Semua pengajuan, status, dan alasan penolakan tersimpan rapi di sini.</p>
+        </section>
+
         <?php if (isset($_GET['sukses'])): ?>
             <div style="background: #E6F6ED; color: var(--success); padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem;">
                 Peminjaman berhasil diajukan dan sedang menunggu persetujuan Admin!
@@ -94,10 +99,22 @@ $riwayat = $stmt->fetchAll();
 
     <nav class="mobile-nav">
         <div class="mobile-nav-container">
-            <a href="index.php" class="mobile-nav-item">Beranda</a>
-            <a href="status.php" class="mobile-nav-item">Jadwal</a>
-            <a href="history.php" class="mobile-nav-item active">Riwayat</a>
-            <a href="auth/logout.php" class="mobile-nav-item">Akun</a>
+            <a href="index.php" class="mobile-nav-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 8v11h16V8l-8-5Zm0 2.2 6 3.75V18H6V8.95l6-3.75Z"/></svg>
+                <span>Beranda</span>
+            </a>
+            <a href="status.php" class="mobile-nav-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10v2H7zM5 6h14v2H5zM4 10h16v10H4z"/></svg>
+                <span>Jadwal</span>
+            </a>
+            <a href="history.php" class="mobile-nav-item active">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-2.05-5.05L13 10h7V3l-2.2 2.2A8.96 8.96 0 0 0 12 3Z"/></svg>
+                <span>Riwayat</span>
+            </a>
+            <a href="auth/logout.php" class="mobile-nav-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.33 0-6 1.79-6 4v2h12v-2c0-2.21-2.67-4-6-4Z"/></svg>
+                <span>Akun</span>
+            </a>
         </div>
     </nav>
 
